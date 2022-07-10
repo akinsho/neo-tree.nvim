@@ -8,7 +8,6 @@ local M = {
 }
 
 M.setup = function (all_source_names)
-  print("all_source_names", vim.inspect(all_source_names))
   local source_names = utils.table_copy(all_source_names)
   table.insert(source_names, "migrations")
 
@@ -156,6 +155,7 @@ local parse_arg = function(result, arg)
 end
 
 M.parse = function(args, strict_checking)
+  require("neo-tree").ensure_config()
   local result = {}
 
   if type(args) == "string" then
